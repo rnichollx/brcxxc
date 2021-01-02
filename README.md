@@ -1,6 +1,6 @@
 # Binary Resources for C++ Compiler (BRCXXC)
 
-Version 2.1.5
+Version 3.1.1
 
 The Binary Resources for C++ Compiler is a simple cross platform compiler that
 converts binary files to C++ header and source files for inclusion in other 
