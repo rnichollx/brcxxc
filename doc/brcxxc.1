@@ -10,7 +10,14 @@ your executable. It can be used for any type of resource, shaders, images,
 sound files, 3D models, etc.
 .SH SYNOPSIS
 .B \fBbrcxxc\fR [\fBDLLEXPORT_ALL\fR|\fBDLLIMPORT_ALL\fR]
-((\fBHEADER\fR \fIheader-guard\fR)|\fBOBJECT\fR) \fIoutput_file\fR (\fITYPE\fR [\fBDLLEXPORT\fR|\fBDLLIMPORT\fR] \fIinput-file\fR \fIsymbol\fR)...
+((\fBHEADER\fR \fIheader-guard\fR)|\fBOBJECT\fR) \fIoutput_file\fR (\fITYPE\fR [\fBDLLEXPORT\fR|\fBDLLIMPORT\fR] \fIsymbol\fR [\fIinput-file\fR])...
+
+.SH NOTES
+
+The output file for a symbol is not included in HEADER mode unless the type depends on the file's size. For example, U8_ARRAY, which is
+std::array<std::uint8_t, N> depends on the file size, so the syntax would be e.g. U8_ARRAY bin::myarray myarrayfile.txt in header mode,
+whereas STRING bin::mystring would be used for a std::string in HEADER mode, since std::string's type does not depend on the size of the
+object.
 
 .SH EXAMPLES
 
@@ -18,7 +25,7 @@ The following command can be used to generate a header:
 
 .nf
 .RS
-brcxxc HEADER BIN_HEADER_HPP bin_header.hpp STRING /etc/issue bin::issue U8_VECTOR /etc/resolv.conf bin::resolveconf
+brcxxc HEADER BIN_HEADER_HPP bin_header.hpp STRING bin::issue U8_VECTOR bin::resolveconf /etc/resolv.conf
 .RE
 .fi
 
