@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(brcxxc VERSION 2.1.4)
+project(brcxxc VERSION 2.1.5)
 
 add_executable(brcxxc src/brcxxc.cpp)
 set_target_properties(brcxxc PROPERTIES CXX_STANDARD 17)
