@@ -1,6 +1,6 @@
 /*
 Binary Resources for C++ Compiler (BRCXXC) version 2.1.2
-Copyright 2019 Ryan P. Nicholl <exaeta@protonmail.com>
+Copyright 2019, 2021 Ryan P. Nicholl <exaeta@protonmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -497,6 +497,13 @@ st:
       do_update = true;
     }
     old_file.close();
+  }
+
+  std::filesystem::path folder_path = std::filesystem::path(output_file).parent_path();
+
+  if (!std::filesystem::exists(folder_path))
+  {
+      std::filesystem::create_directories(folder_path);
   }
 
   if (do_update)
